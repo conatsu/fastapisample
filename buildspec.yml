@@ -5,6 +5,8 @@ env:
     MONGO_API_KEY: "MONGO_API_KEY"
     CSRF_KEY: "CSRF_KEY"
     JWT_KEY: "JWT_KEY"
+    DOCKERHUB_USERNAME: dockerhub_user
+    DOCKERHUB_TOKEN: dockerhub_token
 
 phases:
   pre_build:
@@ -15,6 +17,8 @@ phases:
       - REPOSITORY_URI=969614598120.dkr.ecr.ap-northeast-1.amazonaws.com/fastapi
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - echo Login to DockerHub...
+      - echo $DOCKERHUB_TOKEN | docker login -u $DOCKERHUB_USERNAME --password-stdin 
   build:
     commands:
       - echo Build started on `date`
