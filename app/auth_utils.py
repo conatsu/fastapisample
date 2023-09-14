@@ -35,7 +35,7 @@ class AuthJwtCsrf():
         
     def verify_jwt(self, request) -> bool:
         token = request.cookies.get("access_token")
-        print(token)
+        # print(token)
         if not token:
             raise HTTPException(status_code=401, detail="No JWT exist: may not set yet or deleted")
         _, _, value = token.partition(" ")
