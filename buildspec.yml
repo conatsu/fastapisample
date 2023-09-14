@@ -5,8 +5,8 @@ env:
     MONGO_API_KEY: "MONGO_API_KEY"
     CSRF_KEY: "CSRF_KEY"
     JWT_KEY: "JWT_KEY"
-    DOCKERHUB_USERNAME: dockerhub_user
-    DOCKERHUB_TOKEN: dockerhub_token
+    DOCKERHUB_USERNAME: dockerhub-user
+    DOCKERHUB_TOKEN: dockerhub-token
 
 phases:
   pre_build:
