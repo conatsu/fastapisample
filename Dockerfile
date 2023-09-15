@@ -9,5 +9,5 @@ ARG CSRF_KEY
 ENV CSRF_KEY=$CSRF_KEY
 ARG JWT_KEY
 ENV JWT_KEY=$JWT_KEY
-# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app.main:app"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+# CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app.main:app"]
