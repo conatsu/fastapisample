@@ -1,7 +1,8 @@
 from fastapi import APIRouter
-from fastapi import Response, Request, Depends
+from fastapi import Response, Request, Depends, Cookie
 from fastapi.encoders import jsonable_encoder
 from app.schemas import SuccessMsg, UserBody, UserInfo, Csrf
+from typing import Union
 from app.database import (
     db_signup,
     db_login,
@@ -52,3 +53,8 @@ def get_user_refresh_jwt(request: Request, response: Response):
         key="access_token", value=f"Bearer {new_token}", httponly=True, samesite="none", secure=True)
     res = {"email": subject}
     return res
+
+@router.get("/api/cookie", response_model=SuccessMsg)
+def get_cookie(request: Request):
+    cookies = request.cookies
+    return {"message": f"{cookies}"}
